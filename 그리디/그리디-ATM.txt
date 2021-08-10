@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class NewTest {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int personcount = Integer.parseInt(br.readLine());
+		
+		String str = br.readLine();
+		StringTokenizer st = new StringTokenizer(str);
+		
+		int[] count = new int[personcount];
+		for(int i = 0; i < personcount; i++) {
+			count[i] = Integer.parseInt(st.nextToken());
+		}
+				
+		int tmp ;
+		for(int i=0; i<count.length-1; i++) {
+			for(int j=i+1; j<count.length; j++) {
+				if(count[i] >= count[j]) {
+					tmp = count[i];
+					count[i] = count[j];
+					count[j] = tmp;
+				}
+			}
+		}
+		
+		int sum = 0;
+		int size = count.length;
+		
+		for(int j = 0; j<count.length; j++) {
+			for(int i = 0; i<size; i++) {
+				sum += count[i];
+			}
+			size--;
+		}
+		
+		System.out.println(sum);
+				
+	}
+
+}

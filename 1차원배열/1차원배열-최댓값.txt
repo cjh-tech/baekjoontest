@@ -1,0 +1,25 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int[] arr1 = new int[9];
+		int[] arr2 = new int[9];
+		for(int i = 0; i<arr1.length; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int number = Integer.parseInt(st.nextToken());
+			arr1[i] = number;
+			arr2[i] = number;
+		}
+		Arrays.sort(arr1);
+		System.out.println(arr1[8]);
+		for(int i = 0 ; i < arr2.length; i++) {
+			if(arr1[8] == arr2[i]) {
+				System.out.println(i+1);
+			}
+		}
+	
+	}
+			
+}

@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+		StringTokenizer st = new StringTokenizer(str);
+		int size = Integer.parseInt(st.nextToken());
+		int sample = Integer.parseInt(st.nextToken());
+		
+		String str2 = br.readLine();
+		StringTokenizer st2 = new StringTokenizer(str2);
+		int[] arr = new int[size];
+		for(int i = 0; i < size; i++) {
+			arr[i] = Integer.parseInt(st2.nextToken());
+		}
+		
+		int answer = 0;
+	
+		for(int i = 0; i<size-2; i++) {
+			for(int j = i+1; j<size-1; j++) {
+				for(int k = j+1; k<size; k++) {
+					int temp = arr[i]+arr[j]+arr[k];
+					
+					if(temp == sample) {
+						answer = temp;
+						break;
+					}
+					if((answer < temp) && (temp < sample)) {
+						answer = temp; // answer가 다시 if문안으로 들어가는거 확인 
+					}
+				}
+			}
+		}
+		
+		System.out.println(answer);
+			
+	}
+}
