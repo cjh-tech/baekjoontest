@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+		char ch = str.charAt(0);
+		int number = (int)ch;
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		// bw.write(number); 숫자를 쓰면 아스키코드값으로 인식해서 -> 다시 문자로 입력됨 
+		bw.write(String.valueOf(number)); // 문자열을 집어넣으면 아스키코드값으로 출력 
+		bw.flush();
+		bw.close();
+	}
+}

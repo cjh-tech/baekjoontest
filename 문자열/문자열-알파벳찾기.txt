@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input = br.readLine();
+		char[] arr = input.toCharArray();
+		int[] alphabet = new int[26];
+		int number = 97;
+		
+		for(int i = 0; i < alphabet.length; i++) {
+			alphabet[i] = -1;
+		}
+		
+		
+		for(int i = 0; i<arr.length; i++) {
+			if((97 <= arr[i]-0) &&  (arr[i]-0 <= 122)) {
+				int result = arr[i]-97;
+				if(alphabet[result] == -1) {
+					alphabet[result] += i+1;
+				}else {
+					continue;
+				}
+			}
+		}
+		
+		for(int e : alphabet) {
+			System.out.print(e+" ");
+		}
+		
+	}
+}

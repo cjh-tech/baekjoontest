@@ -1,0 +1,21 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+		StringTokenizer st = new StringTokenizer(str);
+		int count = 0;
+		while(st.hasMoreTokens()) {
+			String tmp = st.nextToken();
+			count++;
+			if(st.hasMoreTokens() == false) {
+				break;
+			}
+		}
+		System.out.println(count);
+	}
+	
+	
+}
