@@ -1,0 +1,71 @@
+import java.util.*;
+import java.io.*;
+ 
+public class Main {
+	static ArrayList<Integer> list = new ArrayList<Integer>();
+	
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testsize = Integer.parseInt(br.readLine());
+		for(int i = 0; i < testsize; i++) {
+			String str = br.readLine();
+			StringTokenizer st = new StringTokenizer(str);
+			int row = Integer.parseInt(st.nextToken());
+			int column = Integer.parseInt(st.nextToken());
+			int linesize = Integer.parseInt(st.nextToken());
+			
+			int[][] arr = new int[row][column];
+			int[][] check = new int[row][column];
+			
+			int[] dx = {0,1,0,-1};
+			int[] dy = {-1,0,1,0};
+			
+			for(int j = 0; j < linesize; j++) {
+				String line = br.readLine();
+				st = new StringTokenizer(line);
+				
+				int number1 = Integer.parseInt(st.nextToken());
+				int number2 = Integer.parseInt(st.nextToken());
+				
+				arr[number1][number2] = 1;
+			}
+			
+			int count = 0;
+			for(int r = 0; r < row; r++) {
+				for (int h = 0; h < column; h++) {
+					if(arr[r][h] == 1 && check[r][h] == 0) {
+						dfs(arr,check,dy,dx,r,h,row,column);
+						count++;
+					}
+					
+				}
+			}
+			list.add(count);
+			
+		}		
+		for(int e : list) {
+			System.out.println(e);
+		}			
+	}
+	
+	public static void dfs(int[][] arr, int[][] check,  int[] dx, int[] dy, int number1, int number2, int row, int column) {
+		check[number1][number2] = 1;
+				
+		int x ;
+		int y ;
+		
+		for(int i = 0; i < 4; i++ ) {
+			
+			x = number1 + dx[i];
+			y = number2 + dy[i];
+			
+			if( x >= 0 && x < row && y >= 0 && y < column) {
+				if( check[x][y] == 0 && arr[x][y] == 1) {
+					dfs(arr,check,dx,dy,x,y,row,column);
+				}
+			}
+						
+		}
+	}
+		
+}

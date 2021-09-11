@@ -1,0 +1,87 @@
+import java.util.*;
+import java.io.*;
+ 
+public class Main {
+ 	
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+		StringTokenizer st = new StringTokenizer(str);
+		int node = Integer.parseInt(st.nextToken());
+		int linecount = Integer.parseInt(st.nextToken());
+		int start = Integer.parseInt(st.nextToken());
+		
+		int[][] arrline = new int[node+1][node+1];
+		int[] check = new int[node+1];
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		
+		for(int i = 0 ; i < linecount; i++) {
+			String line = br.readLine();
+			st = new StringTokenizer(line);
+			int number1 = Integer.parseInt(st.nextToken());
+			int number2 = Integer.parseInt(st.nextToken());
+			
+			arrline[number1][number2] = 1;
+			arrline[number2][number1] = 1;
+		}
+		
+		dfs(arrline,check,start,arr);
+		
+		for(int e : arr) {
+			System.out.print(e+" ");
+		}
+		System.out.println();
+		
+		arr.clear();
+		
+		for(int i = 1; i < check.length; i++) {
+			check[i] = 0;
+		}
+		
+		bfs(arrline,check,start,arr);
+		
+		for(int e : arr) {
+			System.out.print(e+" ");
+		}
+	}
+	
+	public static void dfs(int[][] arrline, int[] check, int number ,ArrayList<Integer> arr) {
+		
+		check[number] = 1;
+		arr.add(number);
+		
+		for(int i = 1; i < arrline.length; i++) {
+			if( arrline[number][i] == 1 && check[i] == 0) {
+				dfs(arrline,check,i,arr);
+			}
+		}
+	}
+	
+	public static void bfs(int[][] arrline, int[] check, int number, ArrayList<Integer> arr) {
+		check[number] = 1;
+		Queue<Integer> queue = new LinkedList<>();
+		queue.add(number);
+				
+		 while(true){
+			if(queue.size() == 0) {
+				break;
+			}
+			number = queue.poll();
+			arr.add(number);
+			for(int i = 1 ; i < arrline.length; i++) {
+				if(arrline[number][i] == 1 && check[i] == 0) {
+					queue.add(i);
+					check[i] = 1;
+				}
+			}
+			
+		}
+				
+		while(queue.size() != 0) {
+			arr.add(queue.poll());
+		}
+				
+	}
+
+}

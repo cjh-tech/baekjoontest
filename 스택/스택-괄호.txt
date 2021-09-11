@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int input = Integer.parseInt(br.readLine());
+		
+		
+		String[] str = new String[input];
+		
+		for(int i = 0; i < input; i++) {
+			Stack<Integer> st = new Stack<Integer>();
+			char[] line = br.readLine().toCharArray();
+			
+			for(int j = 0 ; j < line.length; j++) {
+				if(line[j] == '(') {
+					st.push(0);
+				}else if(line[j] == ')'){
+					try{
+						st.pop();
+					}catch(Exception e) {
+						str[i] = "NO";
+					}
+				}
+			}
+			
+			if(st.isEmpty() == false) {
+				str[i] = "NO";
+			}else if(st.isEmpty() == true && str[i] == null) {
+				str[i] = "YES";
+			}
+		}
+		
+		for(String e : str) {
+			System.out.println(e);
+		}
+		
+	}
+ 	
+}

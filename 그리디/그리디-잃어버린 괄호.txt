@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+		String[] arr = str.split("-");
+				
+		String[] first = arr[0].split("\\+");
+		int sum = 0;
+		
+		for(String e : first) {
+			sum += Integer.parseInt(e);
+		}
+		
+		String rest = "";
+		for(int i = 1; i <arr.length; i++) {
+			rest += "+"+arr[i];
+		}
+						
+		String[] arr2 = rest.split("\\+");
+			int lastsum = 0;
+		for(int i = 1; i < arr2.length; i++) {
+			lastsum += Integer.parseInt(arr2[i]);
+		}
+			
+		int result = sum - lastsum;
+		System.out.println(result);
+		
+	}
+ 	
+}

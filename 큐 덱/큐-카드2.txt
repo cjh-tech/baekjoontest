@@ -1,0 +1,26 @@
+import java.util.*;
+import java.io.*;
+ 
+public class Main {
+ 	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int input = Integer.parseInt(br.readLine());
+		Queue<Integer> queue = new LinkedList<Integer>();
+		for(int i = 1; i <= input; i++) {
+			queue.add(i);
+		}
+		
+		while(true) {
+			if(queue.size() == 1) {
+				break;
+			}
+			queue.poll();
+			int second = queue.poll();
+			queue.add(second);
+			
+		}
+		
+		System.out.println(queue.peek());
+	}
+}

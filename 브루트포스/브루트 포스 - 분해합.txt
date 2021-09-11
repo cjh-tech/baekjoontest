@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int input = Integer.parseInt(br.readLine());
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+				
+		for(int i = 1; i <= input; i++) {
+			char[] result = String.valueOf(i).toCharArray();
+			int sample = 0;
+			for(int j = 0; j < result.length; j++) {
+				sample += Character.getNumericValue(result[j]);
+			}
+			if( i + sample == input) {
+				arr.add(i);
+			}
+		}
+		
+		if(arr.isEmpty() == true) {
+			System.out.println("0");
+		}else if( arr.isEmpty() == false){
+			System.out.println(arr.get(0));
+		}
+					
+	}
+ 	
+}

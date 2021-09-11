@@ -1,0 +1,103 @@
+import java.io.*;
+import java.util.*;
+
+public class Test {
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+		String str = br.readLine();
+		char[] arr = str.toCharArray();
+				
+		String numberstr ="";
+		for(int i = 0 ; i < arr.length; i++) {
+			switch(arr[i]) {
+			case 'A' :
+				numberstr+="2";
+				continue;
+			case 'B' :	
+				numberstr+="2";
+				continue;
+			case 'C' :
+				numberstr+="2";
+				continue;
+			case 'D' :
+				numberstr+="3";
+				continue;
+			case 'E' :
+				numberstr+="3";
+				continue;
+			case 'F' :
+				numberstr+="3";
+				continue;
+			case 'G' :	
+				numberstr+="4";
+				continue;
+			case 'H' :
+				numberstr+="4";
+				continue;
+			case 'I' :
+				numberstr+="4";
+				continue;
+			case 'J' :
+				numberstr+="5";
+				continue;
+			case 'K' :
+				numberstr+="5";
+				continue;
+			case 'L' :
+				numberstr+="5";
+				continue;
+			case 'M' :
+				numberstr+="6";
+				continue;
+			case 'N' :
+				numberstr+="6";
+				continue;
+			case 'O' :
+				numberstr+="6";
+				continue;
+			case 'P' :
+				numberstr+="7";
+				continue;
+			case 'Q' :
+				numberstr+="7";
+				continue;
+			case 'R' :
+				numberstr+="7";
+				continue;
+			case 'S' :
+				numberstr+="7";
+				continue;
+			case 'T' :
+				numberstr+="8";
+				continue;
+			case 'U' :
+				numberstr+="8";
+				continue;
+			case 'V' :
+				numberstr+="8";
+				continue;
+			case 'W' :
+				numberstr+="9";
+				continue;
+			case 'X' :
+				numberstr+="9";
+				continue;
+			case 'Y' :
+				numberstr+="9";
+				continue;
+			case 'Z' :
+				numberstr+="9";
+				continue;	
+			}
+			
+		}
+	
+		char[] result = numberstr.toCharArray();
+		int sum = 0;
+		for(int i = 0; i < result.length; i++) {
+			sum += Character.getNumericValue(result[i])+1; 
+		}
+		System.out.println(sum);
+			
+	}
+}
